@@ -7,6 +7,7 @@ March 2021
 """
 
 from threading import Thread
+import queue
 
 
 class Producer(Thread):
@@ -31,7 +32,12 @@ class Producer(Thread):
         @type kwargs:
         @param kwargs: other arguments that are passed to the Thread's __init__()
         """
-        pass
+        Thread.__init__(self)
+        self._marketplace = marketplace
+        self._republish_wait_time = republish_wait_time
+        self._products = products
+        self._name = kwargs['name']
+        self._daemon = kwargs['daemon']
 
     def run(self):
         pass
