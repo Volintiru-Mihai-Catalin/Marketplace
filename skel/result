@@ -26,39 +26,13 @@ Starting test 9
 Finished test 9
 Test 9:		PASSED
 Starting test 10
+TIMEOUT. Test 10 exceeded maximum allowed time of 60
 Finished test 10
-Test 10:		PASSED
+Test 10:		FAILED
 
 Run pylint
 
-************* Module consumer
-tema/consumer.py:47:24: W0612: Unused variable 'index' (unused-variable)
-************* Module marketplace
-tema/marketplace.py:75:0: C0301: Line too long (106/100) (line-too-long)
-tema/marketplace.py:83:0: C0301: Line too long (104/100) (line-too-long)
-tema/marketplace.py:89:0: C0301: Line too long (110/100) (line-too-long)
-tema/marketplace.py:130:0: C0301: Line too long (104/100) (line-too-long)
-tema/marketplace.py:137:0: C0301: Line too long (104/100) (line-too-long)
-tema/marketplace.py:154:0: C0301: Line too long (104/100) (line-too-long)
-tema/marketplace.py:165:0: C0301: Line too long (106/100) (line-too-long)
-tema/marketplace.py:59:25: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
-tema/marketplace.py:75:25: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
-tema/marketplace.py:83:29: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
-tema/marketplace.py:89:29: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
-tema/marketplace.py:106:25: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
-tema/marketplace.py:122:25: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
-tema/marketplace.py:124:24: C0201: Consider iterating the dictionary directly instead of calling .keys() (consider-iterating-dictionary)
-tema/marketplace.py:130:37: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
-tema/marketplace.py:137:29: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
-tema/marketplace.py:150:25: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
-tema/marketplace.py:154:33: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
-tema/marketplace.py:156:25: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
-tema/marketplace.py:165:25: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
-************* Module producer
-tema/producer.py:41:8: C0103: Attribute name "id" doesn't conform to snake_case naming style ('(([a-z_][a-z0-9_]{2,})|(_[a-z0-9_]*)|(__[a-z][a-z0-9_]+__))$' pattern) (invalid-name)
-tema/producer.py:46:17: W0612: Unused variable 'product' (unused-variable)
-tema/producer.py:46:36: W0612: Unused variable 'process_time' (unused-variable)
 
------------------------------------
-Your code has been rated at 8.36/10
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 

@@ -1,4 +1,0 @@
-2023-04-17 18:29:13,251 - INFO - Producer with ID gxz9gjSJzC did not publish product: Coffee(name='Arabica', price=9, acidity=5.02, roast_level='MEDIUM')
-2023-04-17 18:29:13,251 - INFO - Producer with ID VPDQir1CUs wants to publish product Coffee(name='Indonezia', price=1, acidity=5.05, roast_level='MEDIUM')
-2023-04-17 18:29:13,251 - INFO - Producer with ID OQBmRmHcFk did not publish product: Coffee(name='Robusta', price=3, acidity=5.0, roast_level='MEDIUM')
-2023-04-17 18:29:13,251 - INFO - Producer with ID gRGyfUdUMk published product: Coffee(name='Robusta', price=3, acidity=5.0, roast_level='MEDIUM')

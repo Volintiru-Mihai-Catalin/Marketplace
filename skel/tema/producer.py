@@ -38,16 +38,17 @@ class Producer(Thread):
         self.products = products
         self.name = kwargs['name']
         self.daemon = kwargs['daemon']
-        self.id = self.marketplace.register_producer()
+        self.id_producer = self.marketplace.register_producer()
 
     def run(self):
         while True:
             for order in self.products:
-                (product, quantity, process_time) = order
+                (_, quantity, process_time) = order
 
                 index = 0
                 while index < quantity:
-                    pub_status = self.marketplace.publish(self.id, order[0])
+                    pub_status = self.marketplace.publish(self.id_producer, order[0])
+                    sleep(process_time)
                     if pub_status:
                         index += 1
                     else:
