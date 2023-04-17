@@ -1,152 +1,64 @@
 Starting test 1
-Traceback (most recent call last):
-  File "test.py", line 74, in <module>
-    main()
-  File "test.py", line 60, in main
-    producer.start()
-  File "/usr/lib/python3.8/threading.py", line 845, in start
-    raise RuntimeError("thread.__init__() not called")
-RuntimeError: thread.__init__() not called
-TIMEOUT. Test 1 exceeded maximum allowed time of 30
 Finished test 1
-Test 1:		FAILED
+Test 1:		PASSED
 Starting test 2
-Traceback (most recent call last):
-  File "test.py", line 74, in <module>
-    main()
-  File "test.py", line 60, in main
-    producer.start()
-  File "/usr/lib/python3.8/threading.py", line 845, in start
-    raise RuntimeError("thread.__init__() not called")
-RuntimeError: thread.__init__() not called
-TIMEOUT. Test 2 exceeded maximum allowed time of 30
 Finished test 2
-Test 2:		FAILED
+Test 2:		PASSED
 Starting test 3
-Traceback (most recent call last):
-  File "test.py", line 74, in <module>
-    main()
-  File "test.py", line 60, in main
-    producer.start()
-  File "/usr/lib/python3.8/threading.py", line 845, in start
-    raise RuntimeError("thread.__init__() not called")
-RuntimeError: thread.__init__() not called
-TIMEOUT. Test 3 exceeded maximum allowed time of 30
 Finished test 3
-Test 3:		FAILED
+Test 3:		PASSED
 Starting test 4
-Traceback (most recent call last):
-  File "test.py", line 74, in <module>
-    main()
-  File "test.py", line 60, in main
-    producer.start()
-  File "/usr/lib/python3.8/threading.py", line 845, in start
-    raise RuntimeError("thread.__init__() not called")
-RuntimeError: thread.__init__() not called
-TIMEOUT. Test 4 exceeded maximum allowed time of 30
 Finished test 4
-Test 4:		FAILED
+Test 4:		PASSED
 Starting test 5
-Traceback (most recent call last):
-  File "test.py", line 74, in <module>
-    main()
-  File "test.py", line 60, in main
-    producer.start()
-  File "/usr/lib/python3.8/threading.py", line 845, in start
-    raise RuntimeError("thread.__init__() not called")
-RuntimeError: thread.__init__() not called
-TIMEOUT. Test 5 exceeded maximum allowed time of 30
 Finished test 5
-Test 5:		FAILED
+Test 5:		PASSED
 Starting test 6
-Traceback (most recent call last):
-  File "test.py", line 74, in <module>
-    main()
-  File "test.py", line 60, in main
-    producer.start()
-  File "/usr/lib/python3.8/threading.py", line 845, in start
-    raise RuntimeError("thread.__init__() not called")
-RuntimeError: thread.__init__() not called
-TIMEOUT. Test 6 exceeded maximum allowed time of 30
 Finished test 6
-Test 6:		FAILED
+Test 6:		PASSED
 Starting test 7
-Traceback (most recent call last):
-  File "test.py", line 74, in <module>
-    main()
-  File "test.py", line 60, in main
-    producer.start()
-  File "/usr/lib/python3.8/threading.py", line 845, in start
-    raise RuntimeError("thread.__init__() not called")
-RuntimeError: thread.__init__() not called
-TIMEOUT. Test 7 exceeded maximum allowed time of 30
 Finished test 7
-Test 7:		FAILED
+Test 7:		PASSED
 Starting test 8
-Traceback (most recent call last):
-  File "test.py", line 74, in <module>
-    main()
-  File "test.py", line 60, in main
-    producer.start()
-  File "/usr/lib/python3.8/threading.py", line 845, in start
-    raise RuntimeError("thread.__init__() not called")
-RuntimeError: thread.__init__() not called
-TIMEOUT. Test 8 exceeded maximum allowed time of 30
 Finished test 8
-Test 8:		FAILED
+Test 8:		PASSED
 Starting test 9
-Traceback (most recent call last):
-  File "test.py", line 74, in <module>
-    main()
-  File "test.py", line 60, in main
-    producer.start()
-  File "/usr/lib/python3.8/threading.py", line 845, in start
-    raise RuntimeError("thread.__init__() not called")
-RuntimeError: thread.__init__() not called
-TIMEOUT. Test 9 exceeded maximum allowed time of 60
 Finished test 9
-Test 9:		FAILED
+Test 9:		PASSED
 Starting test 10
-Traceback (most recent call last):
-  File "test.py", line 74, in <module>
-    main()
-  File "test.py", line 60, in main
-    producer.start()
-  File "/usr/lib/python3.8/threading.py", line 845, in start
-    raise RuntimeError("thread.__init__() not called")
-RuntimeError: thread.__init__() not called
-TIMEOUT. Test 10 exceeded maximum allowed time of 60
 Finished test 10
-Test 10:		FAILED
+Test 10:		PASSED
 
 Run pylint
 
-Traceback (most recent call last):
-  File "/usr/lib/python3.8/runpy.py", line 185, in _run_module_as_main
-    mod_name, mod_spec, code = _get_module_details(mod_name, _Error)
-  File "/usr/lib/python3.8/runpy.py", line 144, in _get_module_details
-    return _get_module_details(pkg_main_name, error)
-  File "/usr/lib/python3.8/runpy.py", line 111, in _get_module_details
-    __import__(pkg_name)
-  File "/usr/lib/python3/dist-packages/pylint/__init__.py", line 13, in <module>
-    from pylint.checkers.similar import Run as SimilarRun
-  File "/usr/lib/python3/dist-packages/pylint/checkers/__init__.py", line 42, in <module>
-    from pylint.checkers.base_checker import BaseChecker, BaseTokenChecker
-  File "/usr/lib/python3/dist-packages/pylint/checkers/base_checker.py", line 17, in <module>
-    from pylint.config import OptionsProviderMixIn
-  File "/usr/lib/python3/dist-packages/pylint/config.py", line 49, in <module>
-    from pylint import utils
-  File "/usr/lib/python3/dist-packages/pylint/utils/__init__.py", line 44, in <module>
-    from pylint.utils.ast_walker import ASTWalker
-  File "/usr/lib/python3/dist-packages/pylint/utils/ast_walker.py", line 8, in <module>
-    from astroid import nodes
-  File "/usr/lib/python3/dist-packages/astroid/__init__.py", line 43, in <module>
-    import wrapt
-  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 971, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 914, in _find_spec
-  File "<frozen importlib._bootstrap_external>", line 1407, in find_spec
-  File "<frozen importlib._bootstrap_external>", line 1379, in _get_spec
-  File "<frozen importlib._bootstrap_external>", line 1506, in find_spec
-  File "<frozen importlib._bootstrap_external>", line 142, in _path_stat
-KeyboardInterrupt
+************* Module consumer
+tema/consumer.py:47:24: W0612: Unused variable 'index' (unused-variable)
+************* Module marketplace
+tema/marketplace.py:75:0: C0301: Line too long (106/100) (line-too-long)
+tema/marketplace.py:83:0: C0301: Line too long (104/100) (line-too-long)
+tema/marketplace.py:89:0: C0301: Line too long (110/100) (line-too-long)
+tema/marketplace.py:130:0: C0301: Line too long (104/100) (line-too-long)
+tema/marketplace.py:137:0: C0301: Line too long (104/100) (line-too-long)
+tema/marketplace.py:154:0: C0301: Line too long (104/100) (line-too-long)
+tema/marketplace.py:165:0: C0301: Line too long (106/100) (line-too-long)
+tema/marketplace.py:59:25: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
+tema/marketplace.py:75:25: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
+tema/marketplace.py:83:29: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
+tema/marketplace.py:89:29: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
+tema/marketplace.py:106:25: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
+tema/marketplace.py:122:25: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
+tema/marketplace.py:124:24: C0201: Consider iterating the dictionary directly instead of calling .keys() (consider-iterating-dictionary)
+tema/marketplace.py:130:37: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
+tema/marketplace.py:137:29: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
+tema/marketplace.py:150:25: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
+tema/marketplace.py:154:33: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
+tema/marketplace.py:156:25: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
+tema/marketplace.py:165:25: W1202: Use % formatting in logging functions and pass the % parameters as arguments (logging-format-interpolation)
+************* Module producer
+tema/producer.py:41:8: C0103: Attribute name "id" doesn't conform to snake_case naming style ('(([a-z_][a-z0-9_]{2,})|(_[a-z0-9_]*)|(__[a-z][a-z0-9_]+__))$' pattern) (invalid-name)
+tema/producer.py:46:17: W0612: Unused variable 'product' (unused-variable)
+tema/producer.py:46:36: W0612: Unused variable 'process_time' (unused-variable)
+
+-----------------------------------
+Your code has been rated at 8.36/10
+

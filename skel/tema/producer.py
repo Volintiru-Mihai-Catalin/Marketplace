@@ -41,7 +41,7 @@ class Producer(Thread):
         self.id = self.marketplace.register_producer()
 
     def run(self):
-        while self.daemon:
+        while True:
             for order in self.products:
                 (product, quantity, process_time) = order
 

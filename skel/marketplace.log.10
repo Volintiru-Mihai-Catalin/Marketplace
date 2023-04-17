@@ -1,0 +1,27 @@
+2023-04-17 18:29:12,964 - INFO - Searching product Tea(name='English Breakfast', price=2, type='Black') to add to cart 50
+2023-04-17 18:29:12,964 - INFO - Producer with ID CeQ8A1zCys published product: Tea(name='White Peach', price=5, type='White')
+2023-04-17 18:29:12,964 - INFO - Producer with ID jSKbk8rG9j wants to publish product Tea(name='Pai Mu Tan', price=9, type='White')
+2023-04-17 18:29:12,966 - INFO - Producer with ID PnF5ElcoFI wants to publish product Coffee(name='Indonezia', price=1, acidity=5.05, roast_level='MEDIUM')
+2023-04-17 18:29:12,967 - INFO - Producer with ID FZh89WSpAE wants to publish product Tea(name='Vietnam Oolong', price=10, type='Oolong')
+2023-04-17 18:29:12,972 - INFO - Producer with ID LDF35IYFFx wants to publish product Tea(name='Pai Mu Tan', price=9, type='White')
+2023-04-17 18:29:12,982 - INFO - Producer with ID gxz9gjSJzC wants to publish product Coffee(name='Arabica', price=9, acidity=5.02, roast_level='MEDIUM')
+2023-04-17 18:29:12,982 - INFO - Producer with ID OQBmRmHcFk wants to publish product Coffee(name='Robusta', price=3, acidity=5.0, roast_level='MEDIUM')
+2023-04-17 18:29:12,987 - INFO - Producer with ID FqByC4kNPy wants to publish product Coffee(name='Brasil', price=7, acidity=5.09, roast_level='MEDIUM')
+2023-04-17 18:29:12,987 - INFO - Found product Tea(name='English Breakfast', price=2, type='Black') and added to cart 50
+2023-04-17 18:29:12,987 - INFO - Producer with ID CeQ8A1zCys wants to publish product Coffee(name='Indonezia', price=1, acidity=5.05, roast_level='MEDIUM')
+2023-04-17 18:29:12,987 - INFO - Producer with ID r2U0DF6k07 published product: Tea(name='English Breakfast', price=2, type='Black')
+2023-04-17 18:29:12,989 - INFO - Searching product Tea(name='White Peach', price=5, type='White') to add to cart 50
+2023-04-17 18:29:12,990 - INFO - Producer with ID r2U0DF6k07 wants to publish product Coffee(name='Arabica', price=9, acidity=5.02, roast_level='MEDIUM')
+2023-04-17 18:29:12,990 - INFO - Producer with ID ikt0gZbPgD published product: Tea(name='White Peach', price=5, type='White')
+2023-04-17 18:29:12,990 - INFO - Found product Tea(name='White Peach', price=5, type='White') and added to cart 50
+2023-04-17 18:29:12,990 - INFO - Producer with ID ikt0gZbPgD wants to publish product Tea(name='Vietnam Oolong', price=10, type='Oolong')
+2023-04-17 18:29:12,990 - INFO - Producer with ID r8y0WarIw7 published product: Tea(name='Pai Mu Tan', price=9, type='White')
+2023-04-17 18:29:12,991 - INFO - Attempting to remove product Tea(name='White Peach', price=5, type='White') from cart 50
+2023-04-17 18:29:12,991 - INFO - Producer with ID r8y0WarIw7 wants to publish product Coffee(name='Indonezia', price=1, acidity=5.05, roast_level='MEDIUM')
+2023-04-17 18:29:12,991 - INFO - Producer with ID 6XE1uCRTQm did not publish product: Coffee(name='Arabica', price=9, acidity=5.02, roast_level='MEDIUM')
+2023-04-17 18:29:12,991 - INFO - Producer with ID xtOCvHUVhg did not publish product: Tea(name='Pai Mu Tan', price=9, type='White')
+2023-04-17 18:29:12,991 - INFO - Producer with ID IR94PouM3D did not publish product: Tea(name='Jasmine', price=6, type='Green')
+2023-04-17 18:29:12,991 - INFO - FOUND and removed product Tea(name='White Peach', price=5, type='White') from cart 50
+2023-04-17 18:29:12,991 - INFO - Producer with ID IbnxqVt436 did not publish product: Coffee(name='Robusta', price=3, acidity=5.0, roast_level='MEDIUM')
+2023-04-17 18:29:12,992 - INFO - Producer with ID t4XYevbGaR published product: Tea(name='English Breakfast', price=2, type='Black')
+2023-04-17 18:29:12,992 - INFO - Producer with ID xxZWKmIeDC wants to publish product Coffee(name='Robusta', price=3, acidity=5.0, roast_level='MEDIUM')

@@ -6,7 +6,7 @@ Assignment 1
 March 2021
 """
 
-from threading import Thread
+from threading import Thread, Lock
 from time import sleep
 
 
@@ -38,16 +38,23 @@ class Consumer(Thread):
         self.retry_wait_time = retry_wait_time
         self.name = kwargs['name']
         self.cart_id = self.marketplace.new_cart()
+        self.print_lock = Lock()
 
     def run(self):
-        for operation in self.carts[0]:
-            if operation['type'] == "add":
-                for index in range(operation['quantity']):
-                    while not self.marketplace.add_to_cart(self.cart_id, operation['product']):
-                        sleep(self.retry_wait_time)
+        for order_batch in self.carts:
+            for operation in order_batch:
+                if operation['type'] == "add":
+                    for index in range(operation['quantity']):
+                        while not self.marketplace.add_to_cart(self.cart_id, operation['product']):
+                            sleep(self.retry_wait_time)
 
-            elif operation['type'] == "remove":
-                for index in range(operation['quantity']):
-                    self.marketplace.remove_from_cart(self.cart_id, operation['product'])
+                elif operation['type'] == "remove":
+                    for index in range(operation['quantity']):
+                        self.marketplace.remove_from_cart(self.cart_id, operation['product'])
 
-        self.marketplace.place_order(self.cart_id)
+        product_list = self.marketplace.place_order(self.cart_id)
+
+        self.print_lock.acquire()
+        for product in product_list:
+            print("{0} bought {1}".format(self.name, product))
+        self.print_lock.release()
