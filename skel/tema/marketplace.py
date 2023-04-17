@@ -5,7 +5,10 @@ Computer Systems Architecture Course
 Assignment 1
 March 2021
 """
-import queue
+import copy
+import string
+from random import choice
+from threading import Lock
 
 
 class Marketplace:
@@ -20,13 +23,27 @@ class Marketplace:
         :param queue_size_per_producer: the maximum size of a queue associated with each producer
         """
         self.queue_size_per_producer = queue_size_per_producer
-        self.market = queue.Queue()
+        self.marketplace = list()
+        self.producer_ids = list()
+        self.consumer_carts = dict()
+        self.index = 0
+        self.lock_consumers = Lock()
+        self.lock_producers = Lock()
 
     def register_producer(self):
         """
         Returns an id for the producer that calls this.
         """
-        pass
+        producer_id = ''.join(choice(string.digits + string.ascii_letters) for i in range(10))
+        self.lock_producers.acquire()
+
+        # Make sure that the id is unique
+        while producer_id in self.producer_ids:
+            producer_id = ''.join(choice(string.digits + string.ascii_letters) for i in range(10))
+        self.producer_ids.append(producer_id)
+        self.lock_producers.release()
+
+        return producer_id
 
     def publish(self, producer_id, product):
         """
@@ -40,7 +57,16 @@ class Marketplace:
 
         :returns True or False. If the caller receives False, it should wait and then try again.
         """
-        pass
+        self.lock_producers.acquire()
+
+        is_able_to_publish = False
+        if len(self.marketplace) < self.queue_size_per_producer:
+            self.marketplace.append(copy.copy(product))
+            is_able_to_publish = True
+
+        self.lock_producers.release()
+
+        return is_able_to_publish
 
     def new_cart(self):
         """
@@ -48,7 +74,14 @@ class Marketplace:
 
         :returns an int representing the cart_id
         """
-        pass
+        self.lock_consumers.acquire()
+
+        index = self.index
+        self.consumer_carts.update({index: list()})
+        self.index += 1
+
+        self.lock_consumers.release()
+        return index
 
     def add_to_cart(self, cart_id, product):
         """
@@ -62,7 +95,17 @@ class Marketplace:
 
         :returns True or False. If the caller receives False, it should wait and then try again
         """
-        pass
+        is_item_found = False
+        self.lock_consumers.acquire()
+        for item in self.marketplace:
+            if item == product:
+                self.marketplace.remove(item)
+                self.consumer_carts[cart_id].append(item)
+                is_item_found = True
+                break
+
+        self.lock_consumers.release()
+        return is_item_found
 
     def remove_from_cart(self, cart_id, product):
         """
@@ -74,7 +117,10 @@ class Marketplace:
         :type product: Product
         :param product: the product to remove from cart
         """
-        pass
+        for item in self.consumer_carts[cart_id]:
+            if product == item:
+                self.consumer_carts[cart_id].remove(item)
+                return
 
     def place_order(self, cart_id):
         """
@@ -83,4 +129,4 @@ class Marketplace:
         :type cart_id: Int
         :param cart_id: id cart
         """
-        pass
+        return self.consumer_carts[cart_id]

@@ -25,6 +25,13 @@ class Tea(Product):
     """
     type: str
 
+    def __eq__(self, other):
+        if isinstance(other, Tea):
+            return self.type == other.type and \
+                   self.name == other.name and \
+                   self.price == other.price
+        return False
+
 
 @dataclass(init=True, repr=True, order=False, frozen=True)
 class Coffee(Product):
@@ -33,3 +40,11 @@ class Coffee(Product):
     """
     acidity: str
     roast_level: str
+
+    def __eq__(self, other):
+        if isinstance(other, Coffee):
+            return self.acidity == other.acidity and \
+                   self.roast_level == other.roast_level and \
+                   self.name == other.name \
+                   and self.price == other.price
+        return False
