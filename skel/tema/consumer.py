@@ -52,9 +52,10 @@ class Consumer(Thread):
                     for index in range(operation['quantity']):
                         self.marketplace.remove_from_cart(self.cart_id, operation['product'])
 
-        product_list = self.marketplace.place_order(self.cart_id)
+        order_list = self.marketplace.place_order(self.cart_id)
 
         self.print_lock.acquire()
-        for product in product_list:
-            print("{0} bought {1}".format(self.name, product))
+        for order in order_list:
+            for _, product in order.items():
+                print("{0} bought {1}".format(self.name, product))
         self.print_lock.release()

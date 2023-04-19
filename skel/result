@@ -37,5 +37,5 @@ tema/consumer.py:47:24: W0612: Unused variable 'index' (unused-variable)
 tema/marketplace.py:17:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
 
 ------------------------------------------------------------------
-Your code has been rated at 9.66/10 (previous run: 9.55/10, +0.11)
+Your code has been rated at 9.71/10 (previous run: 9.66/10, +0.05)
 

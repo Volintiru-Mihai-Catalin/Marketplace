@@ -122,7 +122,7 @@ class Marketplace:
             for item in self.marketplace[producer]:
                 if item == product:
                     self.marketplace[producer].remove(item)
-                    self.consumer_carts[cart_id].append(item)
+                    self.consumer_carts[cart_id].append({producer: item})
                     is_item_found = True
                     self.logger.info("Found product %s and added to cart %d", product, cart_id)
                     break
@@ -144,10 +144,12 @@ class Marketplace:
         """
         self.logger.info("Attempting to remove product %s from cart %d", product, cart_id)
         for item in self.consumer_carts[cart_id]:
-            if product == item:
-                self.consumer_carts[cart_id].remove(item)
-                self.logger.info("FOUND and removed product %s from cart %d", product, cart_id)
-                return
+            for producer, product_found in item.items():
+                if product == product_found:
+                    self.consumer_carts[cart_id].remove(item)
+                    self.marketplace[producer].append(product_found)
+                    self.logger.info("FOUND and removed product %s from cart %d", product, cart_id)
+                    return
         self.logger.info("NOT FOUND and removed product %s from cart %d", product, cart_id)
 
     def place_order(self, cart_id):
@@ -200,20 +202,60 @@ class TestMarketplaceMethods(unittest.TestCase):
         Tests the functionality of 'add_to_cart' function
         """
         producer = self.market.register_producer()
-        product = Tea('Linden', 9, 'Herbal')
+        product1 = Tea('Linden', 9, 'Herbal')
         product2 = Tea('Vietnam Oolong', 10, 'Oolong')
-        self.market.publish(producer, product)
-        self.market.publish(producer, product2)
         cart_id = self.market.new_cart()
+
+        self.market.publish(producer, product1)
+        self.market.publish(producer, product2)
+
         self.assertTrue(self.market.add_to_cart(cart_id, product2))
-        self.assertEqual(product2, self.market.consumer_carts[cart_id].pop(0))
+        for _, product in self.market.consumer_carts[cart_id].pop(0).items():
+            self.assertEqual(product2, product)
 
     def test_remove_from_cart(self):
         """
         Tests the functionality of 'remove_from_cart' function
         """
+        producer = self.market.register_producer()
+        product1 = Tea('Linden', 9, 'Herbal')
+        product2 = Tea('Vietnam Oolong', 10, 'Oolong')
+        cart_id = self.market.new_cart()
+
+        self.market.publish(producer, product1)
+        self.market.publish(producer, product2)
+
+        self.assertTrue(self.market.add_to_cart(cart_id, product1))
+        self.assertTrue(self.market.add_to_cart(cart_id, product2))
+
+        self.market.remove_from_cart(cart_id, product2)
+
+        self.assertTrue(product1 in self.market.consumer_carts[cart_id].pop(0).values(),
+                        "FAILED test_remove_from_cart")
+        self.assertTrue(product2 in self.market.marketplace[producer],
+                        "FAILED test_remove_from_cart")
+        for item in self.market.consumer_carts[cart_id]:
+            for _, product in item.items():
+                self.assertNotEqual(product2, product)
 
     def test_place_order(self):
         """
         Tests the functionality of 'place_order' function
         """
+        producer = self.market.register_producer()
+        product1 = Tea('Linden', 9, 'Herbal')
+        product2 = Tea('Vietnam Oolong', 10, 'Oolong')
+        cart_id = self.market.new_cart()
+
+        self.market.publish(producer, product1)
+        self.market.publish(producer, product2)
+        self.market.publish(producer, product2)
+
+        self.assertTrue(self.market.add_to_cart(cart_id, product1))
+        self.assertTrue(self.market.add_to_cart(cart_id, product2))
+        self.assertTrue(self.market.add_to_cart(cart_id, product2))
+
+        self.market.remove_from_cart(cart_id, product2)
+
+        order_list = self.market.place_order(cart_id)
+        self.assertEqual([{producer: product1}, {producer: product2}], order_list)
