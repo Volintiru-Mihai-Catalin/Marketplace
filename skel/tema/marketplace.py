@@ -5,13 +5,16 @@ Computer Systems Architecture Course
 Assignment 1
 March 2021
 """
+import re
 import copy
-import string
 import time
+import string
+import logging
+import unittest
 from random import choice
 from threading import Lock
-import logging
 from logging.handlers import RotatingFileHandler
+from .product import Tea
 
 
 class Marketplace:
@@ -155,3 +158,62 @@ class Marketplace:
         """
         self.logger.info("Placing order from cart %s: %s", cart_id, self.consumer_carts[cart_id])
         return self.consumer_carts[cart_id]
+
+
+class TestMarketplaceMethods(unittest.TestCase):
+    """
+    Class that tests the functionality of Marketplace's methods.
+    """
+
+    def setUp(self) -> None:
+        """
+        Setup function to initialize the Marketplace instance
+        """
+        self.market = Marketplace(20)
+
+    def test_register_producer(self):
+        """
+        Tests the functionality of 'register_producer' method
+        """
+        regex_pattern = r'^[a-zA-Z0-9]{10}$'
+        self.assertTrue(re.match(regex_pattern, self.market.register_producer()),
+                        "FAILED test_register_producer")
+
+    def test_publish(self):
+        """
+        Tests the functionality of 'publish' function
+        """
+        producer = self.market.register_producer()
+        product = Tea('Linden', 9, 'Herbal')
+        self.market.publish(producer, product)
+        self.assertTrue(product in self.market.marketplace[producer], "FAILED test_publish")
+
+    def test_new_cart(self):
+        """
+        Tests the functionality of 'new_cart' function
+        """
+        cart_id = self.market.new_cart()
+        self.assertTrue(cart_id == self.market.index - 1, "FAILED test_new_cart")
+
+    def test_add_to_cart(self):
+        """
+        Tests the functionality of 'add_to_cart' function
+        """
+        producer = self.market.register_producer()
+        product = Tea('Linden', 9, 'Herbal')
+        product2 = Tea('Vietnam Oolong', 10, 'Oolong')
+        self.market.publish(producer, product)
+        self.market.publish(producer, product2)
+        cart_id = self.market.new_cart()
+        self.assertTrue(self.market.add_to_cart(cart_id, product2))
+        self.assertEqual(product2, self.market.consumer_carts[cart_id].pop(0))
+
+    def test_remove_from_cart(self):
+        """
+        Tests the functionality of 'remove_from_cart' function
+        """
+
+    def test_place_order(self):
+        """
+        Tests the functionality of 'place_order' function
+        """
