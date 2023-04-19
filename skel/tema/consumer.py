@@ -44,17 +44,13 @@ class Consumer(Thread):
         for order_batch in self.carts:
             for operation in order_batch:
                 if operation['type'] == "add":
-                    index = 0
-                    while index < operation['quantity']:
+                    for index in range(operation['quantity']):
                         while not self.marketplace.add_to_cart(self.cart_id, operation['product']):
                             sleep(self.retry_wait_time)
-                        index += 1
 
                 elif operation['type'] == "remove":
-                    index = 0
-                    while index < operation['quantity']:
+                    for index in range(operation['quantity']):
                         self.marketplace.remove_from_cart(self.cart_id, operation['product'])
-                        index += 1
 
         product_list = self.marketplace.place_order(self.cart_id)
 

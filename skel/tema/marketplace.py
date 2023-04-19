@@ -63,17 +63,13 @@ class Marketplace:
     def publish(self, producer_id, product):
         """
         Adds the product provided by the producer to the marketplace
-
         :type producer_id: String
         :param producer_id: producer id
-
         :type product: Product
         :param product: the Product that will be published in the Marketplace
-
         :returns True or False. If the caller receives False, it should wait and then try again.
         """
-        self.logger.info("Producer with ID %s wants to publish product %s",
-                         producer_id, product)
+        self.logger.info("Producer with ID %s wants to publish product %s", producer_id, product)
 
         self.lock_producers.acquire()
 
@@ -81,14 +77,13 @@ class Marketplace:
         if len(self.marketplace[producer_id]) < self.queue_size_per_producer:
             product_copy = copy.copy(product)
             self.marketplace[producer_id].append(product_copy)
-            self.logger.info("Producer with ID %s published product: %s",
-                             producer_id, product)
+            self.logger.info("Producer with ID %s published product: %s", producer_id, product)
 
             is_able_to_publish = True
 
         self.lock_producers.release()
         if not is_able_to_publish:
-            self.logger.info("Producer with ID %s did not publish product: %s",
+            self.logger.info("Producer with ID %s did NOT publish product: %s",
                              producer_id, product)
 
         return is_able_to_publish
@@ -96,7 +91,6 @@ class Marketplace:
     def new_cart(self):
         """
         Creates a new cart for the consumer
-
         :returns an int representing the cart_id
         """
         self.lock_consumers.acquire()
@@ -106,19 +100,16 @@ class Marketplace:
         self.index += 1
 
         self.lock_consumers.release()
-        self.logger.info("Created cart with ID: %s", index)
+        self.logger.info("Created cart with ID: %d", index)
         return index
 
     def add_to_cart(self, cart_id, product):
         """
         Adds a product to the given cart. The method returns
-
         :type cart_id: Int
         :param cart_id: id cart
-
         :type product: Product
         :param product: the product to add to cart
-
         :returns True or False. If the caller receives False, it should wait and then try again
         """
         is_item_found = False
@@ -130,47 +121,37 @@ class Marketplace:
                     self.marketplace[producer].remove(item)
                     self.consumer_carts[cart_id].append(item)
                     is_item_found = True
-                    self.logger.info("Found product %s and added to cart %d",
-                                     product, cart_id)
+                    self.logger.info("Found product %s and added to cart %d", product, cart_id)
                     break
             if is_item_found:
                 break
 
         self.lock_consumers.release()
         if not is_item_found:
-            self.logger.info("NOT found product %s and NOT added to cart %d",
-                             product, cart_id)
+            self.logger.info("NOT found product %s and NOT added to cart %d", product, cart_id)
         return is_item_found
 
     def remove_from_cart(self, cart_id, product):
         """
         Removes a product from cart.
-
         :type cart_id: Int
         :param cart_id: id cart
-
         :type product: Product
         :param product: the product to remove from cart
         """
-        self.logger.info("Attempting to remove product %s from cart %d",
-                         product, cart_id)
+        self.logger.info("Attempting to remove product %s from cart %d", product, cart_id)
         for item in self.consumer_carts[cart_id]:
             if product == item:
                 self.consumer_carts[cart_id].remove(item)
-                self.logger.info("FOUND and removed product %s from cart %d",
-                                 product, cart_id)
+                self.logger.info("FOUND and removed product %s from cart %d", product, cart_id)
                 return
-        self.logger.info("NOT FOUND and removed product %s from cart %d",
-                         product, cart_id)
+        self.logger.info("NOT FOUND and removed product %s from cart %d", product, cart_id)
 
     def place_order(self, cart_id):
         """
         Return a list with all the products in the cart.
-
         :type cart_id: Int
         :param cart_id: id cart
         """
-        self.logger.info("Placing order from cart %d: %s",
-                         cart_id, self.consumer_carts[cart_id])
-
+        self.logger.info("Placing order from cart %s: %s", cart_id, self.consumer_carts[cart_id])
         return self.consumer_carts[cart_id]
