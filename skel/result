@@ -20,14 +20,16 @@ Starting test 7
 Finished test 7
 Test 7:		PASSED
 Starting test 8
+TIMEOUT. Test 8 exceeded maximum allowed time of 30
 Finished test 8
-Test 8:		PASSED
+Test 8:		FAILED
 Starting test 9
 Finished test 9
 Test 9:		PASSED
 Starting test 10
+TIMEOUT. Test 10 exceeded maximum allowed time of 60
 Finished test 10
-Test 10:		PASSED
+Test 10:		FAILED
 
 Run pylint
 
@@ -37,5 +39,5 @@ tema/consumer.py:47:24: W0612: Unused variable 'index' (unused-variable)
 tema/marketplace.py:17:0: E0402: Attempted relative import beyond top-level package (relative-beyond-top-level)
 
 ------------------------------------------------------------------
-Your code has been rated at 9.71/10 (previous run: 9.66/10, +0.05)
+Your code has been rated at 9.71/10 (previous run: 9.61/10, +0.10)
 

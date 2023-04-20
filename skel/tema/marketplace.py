@@ -14,7 +14,7 @@ import unittest
 from random import choice
 from threading import Lock
 from logging.handlers import RotatingFileHandler
-from .product import Tea
+from .product import Product, Tea, Coffee
 
 
 class Marketplace:
@@ -30,8 +30,8 @@ class Marketplace:
         :param queue_size_per_producer: the maximum size of a queue associated with each producer
         """
         self.queue_size_per_producer = queue_size_per_producer
-        self.marketplace = dict()
-        self.consumer_carts = dict()
+        self.marketplace = {}
+        self.consumer_carts = {}
         self.index = 0
         self.lock_consumers = Lock()
         self.lock_producers = Lock()
@@ -56,7 +56,7 @@ class Marketplace:
         # Make sure that the id is unique
         while producer_id in self.marketplace.keys():
             producer_id = ''.join(choice(string.digits + string.ascii_letters) for i in range(10))
-        self.marketplace.update({producer_id: list()})
+        self.marketplace.update({producer_id: []})
         self.lock_producers.release()
 
         self.logger.info("Registered producer with ID: %s", producer_id)
@@ -99,7 +99,7 @@ class Marketplace:
         self.lock_consumers.acquire()
 
         index = self.index
-        self.consumer_carts.update({index: list()})
+        self.consumer_carts.update({index: []})
         self.index += 1
 
         self.lock_consumers.release()
